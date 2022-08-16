@@ -10,15 +10,19 @@ import android.view.ViewGroup
 import android.webkit.URLUtil
 import android.widget.Toast
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
+import dagger.hilt.android.AndroidEntryPoint
 import ru.tikodvlp.newsapp.databinding.FragmentDetailsBinding
 
+@AndroidEntryPoint
 class DetailsFragment : Fragment() {
 
     private var _binding: FragmentDetailsBinding? = null
     private val mBinding get() = _binding!!
     private val bundleArgs: DetailsFragmentArgs by navArgs()
+    private val viewModel by viewModels<DetailsViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -55,6 +59,9 @@ class DetailsFragment : Fragment() {
                 } catch (e: Exception) {
                     Toast.makeText(context, "The device doesn't have any browser to view the site", Toast.LENGTH_SHORT)
                 }
+            }
+            mBinding.iconFavorite.setOnClickListener {
+                viewModel.saveFavoriteArticle(article)
             }
         }
     }

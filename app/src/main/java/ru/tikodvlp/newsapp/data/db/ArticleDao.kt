@@ -1,16 +1,14 @@
 package ru.tikodvlp.newsapp.data.db
 
 import androidx.lifecycle.LiveData
-import androidx.room.Delete
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 import ru.tikodvlp.newsapp.models.Article
 
+@Dao
 interface ArticleDao {
 
     @Query("SELECT * FROM articles")
-    suspend fun getAllArticles(): LiveData<List<Article>>
+    fun getAllArticles(): List<Article>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(article: Article)
