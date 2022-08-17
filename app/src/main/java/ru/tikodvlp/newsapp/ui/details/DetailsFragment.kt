@@ -9,11 +9,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.webkit.URLUtil
 import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import dagger.hilt.android.AndroidEntryPoint
+import ru.tikodvlp.newsapp.R
 import ru.tikodvlp.newsapp.databinding.FragmentDetailsBinding
 
 @AndroidEntryPoint
@@ -62,6 +65,18 @@ class DetailsFragment : Fragment() {
             }
             mBinding.iconFavorite.setOnClickListener {
                 viewModel.saveFavoriteArticle(article)
+            }
+            mBinding.iconBack.setOnClickListener {
+                // go back needed
+            }
+            mBinding.iconShare.setOnClickListener {
+                val sendIntent: Intent = Intent().apply {
+                    action = Intent.ACTION_SEND
+                    putExtra(Intent.EXTRA_TEXT, "Check this article up!")
+                    type = "text/html"
+                }
+                val shareIntent = Intent.createChooser(sendIntent, null)
+                startActivity(shareIntent)
             }
         }
     }
