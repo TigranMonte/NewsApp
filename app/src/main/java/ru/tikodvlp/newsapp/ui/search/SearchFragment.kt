@@ -18,7 +18,6 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import ru.tikodvlp.newsapp.databinding.FragmentSearchBinding
 import ru.tikodvlp.newsapp.ui.adapters.NewsAdapter
-import ru.tikodvlp.newsapp.ui.main.MainFragment
 import ru.tikodvlp.newsapp.utils.Resource
 
 @AndroidEntryPoint

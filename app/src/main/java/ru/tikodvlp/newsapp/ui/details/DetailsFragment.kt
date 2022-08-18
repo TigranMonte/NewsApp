@@ -13,6 +13,7 @@ import androidx.activity.OnBackPressedCallback
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import dagger.hilt.android.AndroidEntryPoint
@@ -68,6 +69,7 @@ class DetailsFragment : Fragment() {
             }
             mBinding.iconBack.setOnClickListener {
                 // go back needed
+                findNavController().navigate(R.id.action_detailsFragment_to_mainFragment)
             }
             mBinding.iconShare.setOnClickListener {
                 val sendIntent: Intent = Intent().apply {
