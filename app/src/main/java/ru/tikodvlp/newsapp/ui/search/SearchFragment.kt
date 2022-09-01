@@ -36,7 +36,6 @@ class SearchFragment : Fragment() {
         _binding = FragmentSearchBinding.inflate(layoutInflater, container,false)
         return mBinding.root
     }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initAdapter()
@@ -52,7 +51,6 @@ class SearchFragment : Fragment() {
                 }
             }
         }
-
         viewModel.searchNewsLiveData.observe(viewLifecycleOwner) { response ->
             when(response) {
                 is Resource.Success -> {
@@ -73,7 +71,6 @@ class SearchFragment : Fragment() {
             }
         }
     }
-
     private fun initAdapter() {
         newsAdapter = NewsAdapter()
         search_news_adapter.apply {
